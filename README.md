@@ -13,19 +13,15 @@ I build automation using **Playwright, TypeScript, Selenium, Java, Python and Py
 
 ---
 
-## 🚀 Featured Projects
+## 🚀 My 3 Active Portfolio Projects
 
-**3 projects retained: 2 flagship AI engineering projects and 1 supporting healthcare QA project.**
-
-| # | Project | Problem / solution | Status |
+| # | Project | What it demonstrates | Status |
 |---|---|---|---|
-| 1 | [AI Quality Engineering Workbench](https://github.com/vinodcse99/ai-quality-engineering-workbench) | Python/Pytest workbench for LLM response quality, RAG evaluation, agentic workflow validation and synthetic AI security regression | **Flagship — active validation** |
-| 2 | [AI-Powered QA Automation Workbench](https://github.com/vinodcse99/ai-powered-qa-automation-workbench) | Gemini-assisted test design and Playwright TypeScript generation with static quality gates, POM reuse and deterministic execution | **Flagship — core workflow demonstrated** |
-| 3 | [Healthcare AI Testing](https://github.com/vinodcse99/healthcare-ai-testing) | Synthetic clinic portal UI/API automation and human-reviewed AI test drafting | **Supporting prototype — execution evidence pending** |
+| 1 | [AI Quality Engineering Workbench](https://github.com/vinodcse99/ai-quality-engineering-workbench) | Python/Pytest evaluation of LLM responses, RAG, agentic workflows and synthetic AI security scenarios | **Active — validation expanding** |
+| 2 | [AI-Powered QA Automation Workbench](https://github.com/vinodcse99/ai-powered-qa-automation-workbench) | Gemini-assisted test design and Playwright TypeScript generation with static quality gates, POM reuse and deterministic execution | **Active — core workflow demonstrated** |
+| 3 | [Healthcare AI Testing](https://github.com/vinodcse99/healthcare-ai-testing) | Synthetic healthcare UI/API automation and human-reviewed AI test drafting | **Active — prototype validation pending** |
 
-See **[PROJECT_PORTFOLIO_STATUS.md](./PROJECT_PORTFOLIO_STATUS.md)** for each project's problem, objective, solution, technology, provider, implementation evidence, limitations and pending work.
-
-**Portfolio naming:** Enterprise Data Catalog is a sample application inside the AI-Powered QA Automation Workbench, not a separate project. The early Playwright ChatGPT POC is excluded because meaningful integration and execution evidence have not been established.
+For each project's problem, objective, solution, technology, implementation evidence and pending work, see **[PROJECT_PORTFOLIO_STATUS.md](./PROJECT_PORTFOLIO_STATUS.md)**.
 
 ---
 

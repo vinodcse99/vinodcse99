@@ -1,59 +1,62 @@
-# QA & AI Quality Engineering Portfolio — Status
+# QA & AI Quality Engineering Portfolio — Project Status
 
 **Owner:** Vinod Kumar Gogula  
-**Reviewed:** 22 November 2026  
-**Purpose:** Single source of truth. Sample applications and unfinished scaffolds are not counted as finished portfolio projects.
+**Last reviewed:** 22 November 2026
 
 ## Portfolio at a glance
 
-**3 projects retained: 2 flagship AI engineering projects and 1 supporting domain QA project.**
+**We are actively developing and validating exactly 3 portfolio projects.**
 
-| # | Project | Repository | Role / status |
-|---|---|---|---|
-| 1 | AI Quality Engineering Workbench | [GitHub](https://github.com/vinodcse99/ai-quality-engineering-workbench) | Flagship 1 — active; validation expanding |
-| 2 | AI-Powered QA Automation Workbench | [GitHub](https://github.com/vinodcse99/ai-powered-qa-automation-workbench) | Flagship 2 — core workflow demonstrated |
-| 3 | Healthcare AI Testing | [GitHub](https://github.com/vinodcse99/healthcare-ai-testing) | Supporting project — prototype; execution evidence pending |
+| # | Official project | Repository | Focus | Current status |
+|---|---|---|---|---|
+| 1 | AI Quality Engineering Workbench | [GitHub](https://github.com/vinodcse99/ai-quality-engineering-workbench) | LLM, RAG, agentic AI and AI security evaluation | Active — validation expanding |
+| 2 | AI-Powered QA Automation Workbench | [GitHub](https://github.com/vinodcse99/ai-powered-qa-automation-workbench) | AI-assisted test design and Playwright automation | Active — core workflow demonstrated |
+| 3 | Healthcare AI Testing | [GitHub](https://github.com/vinodcse99/healthcare-ai-testing) | Healthcare UI/API automation and human-reviewed AI test drafting | Active — prototype validation pending |
 
-**Excluded:** Playwright ChatGPT POC is an early scaffold with a short README, empty npm scripts and no demonstrated ChatGPT integration or meaningful test evidence. Remove it from featured projects and archive it rather than presenting it as complete. Enterprise Data Catalog QA is the sample application inside Project 2, not a separate project; do not count or feature its separate empty repository.
+This is the single source of truth for the three active portfolio projects.
 
 ## Evidence rules
 
-- **Implemented / present** means documented or code/configuration is present.
-- **Recorded result** means a README or earlier project record reports a test run; it is not a fresh run on this review date.
-- This review inspected the four repository READMEs and selected dependency manifests. It did not run local tests or inspect every source file.
-- A provider name is not a foundation-model count. Claim model comparisons only after naming, running and comparing specific model IDs.
+- **Implemented / present:** code or configuration is present in the repository.
+- **Recorded result:** a test result documented in project records; it is not necessarily a fresh run during this review.
+- **Freshly verified:** tests were executed and evidence captured in the current validation cycle.
+- **Pending:** implementation, validation or evidence is still required.
 - Do not claim production deployment, exhaustive security coverage, customer adoption or measured ROI without evidence.
+- A provider name is not a foundation-model count. Claim model comparisons only after naming, running and comparing specific model IDs.
+- Keep API keys and secrets out of GitHub. Use environment variables and GitHub Actions secrets.
 
 ---
 
 # 1. AI Quality Engineering Workbench
 
 **Repository:** https://github.com/vinodcse99/ai-quality-engineering-workbench  
-**Role:** Main AI application quality evaluation showcase  
-**Status:** Active; validation expanding
+**Role:** Flagship AI application quality evaluation project  
+**Status:** Active — validation expanding
 
-### Problem
+### Problem and objective
 
-Traditional UI/API automation does not fully measure AI application behavior. LLMs may return incorrect or irrelevant answers; RAG systems may retrieve unsuitable context or generate unsupported answers; agents may choose incorrect tools or arguments; prompt injection may influence model behavior or expose sensitive data. Teams need repeatable evaluation scenarios and regression evidence.
+Traditional UI/API automation does not fully measure AI application behavior. LLMs may return incorrect or irrelevant answers; RAG systems may retrieve unsuitable context or generate unsupported answers; agents may choose incorrect tools or arguments; prompt injection may influence model behavior or expose sensitive data.
 
-### Objective and solution
+The objective is to build a reusable Python-based quality workbench for evaluating LLM response quality, RAG behavior, agentic workflows and synthetic AI security scenarios.
 
-Build a Python-based quality workbench to evaluate LLM response quality, RAG behavior, agentic workflows and synthetic AI security scenarios. Workflow: datasets → evaluators → Pytest → JSON/HTML reports → Streamlit dashboard.
+### Solution workflow
 
-### Technology and providers
+AI application/model output → evaluation datasets → deterministic and model-backed evaluators → Pytest execution → JSON/HTML reports → Streamlit dashboard.
+
+### Technology and provider
 
 | Area | Technology |
 |---|---|
 | Language / test runner | Python 3.12, Pytest |
-| AI evaluation | DeepEval |
-| Live provider | Google Gemini via google-genai |
-| Data | JSON evaluation datasets |
+| AI evaluation framework | DeepEval |
+| Live provider integration | Google Gemini via google-genai |
+| Evaluation datasets | JSON |
 | Dashboard / charts | Streamlit, Plotly |
-| Reports | pytest-html, pytest-json-report |
+| Reporting | pytest-html, pytest-json-report |
 
-**Provider/model clarity:** Gemini is the one documented live provider integration. DeepEval is an evaluation framework, not a model. The README does not establish the exact Gemini model ID or a completed multi-model comparison.
+Google Gemini is the documented live provider integration. DeepEval is an evaluation framework, not a foundation model. The exact Gemini model ID and completed multi-model comparison are not established by current documentation.
 
-### Implemented / present in repository documentation
+### Implemented / documented capabilities
 
 | Capability | Status |
 |---|---|
@@ -67,69 +70,70 @@ Build a Python-based quality workbench to evaluate LLM response quality, RAG beh
 | Gemini integration | Implemented; smoke test recorded as passed |
 | Streamlit dashboard and reporting | Implemented |
 
-### Recorded evidence
+### Recorded validation evidence
 
-| Test evidence | Recorded result |
+| Evidence | Recorded result |
 |---|---:|
-| Offline suite | 124 collected |
-| Passed / skipped / failed | 123 / 1 / 0 |
-| Gemini smoke test | 1/1 passed |
-| Live semantic RAG attempt | Incomplete; provider returned temporary HTTP 503 |
+| Offline tests collected | 124 |
+| Offline tests passed | 123 |
+| Offline tests skipped | 1 |
+| Offline tests failed | 0 |
+| Gemini integration smoke test | 1/1 passed |
+| Live semantic RAG evaluation | Incomplete; provider returned temporary HTTP 503 |
 
-Historical results only, not freshly rerun in this review. Security findings are synthetic scenario results, not proof of a real compromise or a professional penetration test.
+These are historical recorded results, not a fresh execution in this review. The incomplete RAG attempt is not a passing result. Synthetic security scenarios are not proof of a real compromise or a professional penetration test.
 
-### Pending
+### Pending work
 
-| Priority | Work | Required evidence |
+| Priority | Work | Completion evidence required |
 |---|---|---|
-| P0 | Fresh full offline run | Dated report with pass/fail/skip counts |
-| P0 | Complete live Gemini RAG evaluation | Reproducible successful run and metrics |
-| P0 | Populate agentic datasets | Positive, negative and edge cases |
-| P1 | Provider retries, timeouts and error handling | Failure-path tests |
-| P1 | Verify dashboard with latest reports | Current-run dashboard evidence |
-| P1 | CI quality gates | Successful Actions run |
+| P0 | Fresh full offline suite | Dated report with exact pass/fail/skip counts |
+| P0 | Complete live Gemini-backed RAG evaluation | Reproducible successful run with inputs, metrics and report |
+| P0 | Populate agentic datasets | Positive, negative and edge cases with expected outcomes |
+| P1 | Provider timeout, retry and error handling | Failure-path tests |
+| P1 | Verify dashboard against latest reports | Dashboard showing current run and metrics |
+| P1 | CI quality gates | Successful GitHub Actions run |
 | P2 | Multi-model comparison | Named model IDs and comparable results |
-| P2 | Public demo | Architecture walkthrough and sample report |
+| P2 | Public demo and architecture guide | Reproducible walkthrough and sample report |
 
-**Safe portfolio claim:** A Python/Pytest workbench demonstrating LLM, RAG, agentic workflow and synthetic AI security evaluation patterns, with optional Gemini integration and reporting. Live RAG validation and model comparison remain in progress.
+**Portfolio message:** A Python/Pytest workbench for evaluating LLM, RAG, agentic workflow and synthetic AI security behavior, with Gemini integration and reporting. Live RAG validation and broader model comparison remain in progress.
 
 ---
 
 # 2. AI-Powered QA Automation Workbench
 
 **Repository:** https://github.com/vinodcse99/ai-powered-qa-automation-workbench  
-**Role:** Main AI-assisted test engineering showcase  
-**Status:** Active; core generation workflow demonstrated
+**Role:** Flagship AI-assisted test engineering project  
+**Status:** Active — core workflow demonstrated
 
-### Problem
+### Problem and objective
 
-Converting business requirements into test scenarios and automation takes significant manual effort. AI can accelerate this work, but generated tests may have invalid locators, weak assertions, missing coverage or broken traceability. Unreviewed generated tests can reduce quality.
+Converting business requirements into test scenarios and automation takes significant manual effort. AI can accelerate this work, but generated tests may have invalid locators, weak assertions, missing coverage or broken traceability.
 
-### Objective and solution
+The objective is to demonstrate AI-assisted test design and Playwright automation while retaining static validation, human review, reusable Page Object Model architecture and deterministic browser assertions.
 
-Demonstrate AI-assisted test design and Playwright automation while retaining static validation, human review, POM reuse and deterministic browser assertions.
+### Solution workflow
 
-Workflow: business requirement → Gemini-assisted scenario design → structured JSON → Gemini-assisted Playwright generation → static quality gate → human review → Playwright execution → reports.
-
-The Enterprise Data Catalog is the sample application within this project, not a separate project.
+Business requirement → Gemini-assisted scenario design → structured JSON → Gemini-assisted Playwright generation → static quality gate → human review → Playwright execution → reports.
 
 ### Technology and provider
 
 | Area | Technology |
 |---|---|
 | Languages / runtime | TypeScript, JavaScript, Node.js |
-| Automation | Playwright |
+| UI/API automation | Playwright |
 | AI provider / SDK | Google Gemini, @google/genai |
-| Design | Page Object Model |
-| Data / CI | JSON, GitHub Actions |
+| Design pattern | Page Object Model |
+| Scenario data | JSON |
+| CI/CD | GitHub Actions |
 
-Gemini is the one documented provider. Exact model ID and multi-model comparison are not established.
+Google Gemini is the documented provider. The exact model ID and multi-model comparison are not established by current documentation.
 
-### Implemented / present according to README
+### Implemented / documented capabilities
 
 | Capability | Status |
 |---|---|
-| Sample Enterprise Data Catalog app | Implemented |
+| Sample Enterprise Data Catalog application | Implemented |
 | Playwright TypeScript framework and POM | Implemented |
 | UI, API and service-health tests | Implemented |
 | Gemini AI Test Designer | Code present; standalone end-to-end verification pending |
@@ -137,33 +141,37 @@ Gemini is the one documented provider. Exact model ID and multi-model comparison
 | Generated-test static quality gate | Implemented |
 | POM, assertion, syntax and traceability checks | Implemented |
 | Human review step | Documented |
-| AI failure analysis, test-data assistant, LLM evaluator, MCP QA agent | Planned |
+| AI failure analysis | Planned |
+| AI test-data assistant | Planned |
+| LLM quality evaluator | Planned |
+| MCP-based QA agent | Planned |
 
-### Recorded evidence
+### Recorded validation evidence
 
 | Evidence | Recorded result |
 |---|---:|
 | Generated Chromium suite 1 | 8 passed |
 | Generated Chromium suite 2 | 10 passed |
 | Total generated browser tests | 18 passed, 0 failed |
-| Static checks | 10/10 per suite |
+| Static quality checks | 10/10 per suite |
 | TypeScript typecheck | Passed |
 
-These are README-recorded results, not a fresh run during this review; they cover the sample app, not production-system coverage.
+These are historical README-recorded results, not a fresh run during this review.
 
-### Pending
+### Pending work
 
-| Priority | Work | Required evidence |
+| Priority | Work | Completion evidence required |
 |---|---|---|
-| P0 | Verify standalone AI Test Designer | Requirement input → scenarios → report |
+| P0 | Verify standalone AI Test Designer | Requirement input → scenarios → validation report |
 | P0 | Fresh standard and generated test runs | Dated Playwright reports |
-| P0 | Demonstrate poor-test rejection | Negative examples rejected by quality gate |
-| P1 | AI failure analysis | Reproducible failure and diagnosis |
+| P0 | Demonstrate rejection of poor generated tests | Negative examples rejected by quality gate |
+| P1 | AI failure analysis | Reproducible failure and useful diagnosis |
 | P1 | Generated-test quality evaluation | Measured usefulness, correctness and traceability |
-| P1 | Requirement-to-test traceability | Requirement IDs mapped to generated/executed tests |
-| P2 | Test-data assistant and MCP QA agent | Working demos, permissions and audit evidence |
+| P1 | Requirement-to-test traceability | Requirement IDs mapped to generated and executed tests |
+| P2 | AI test-data assistant | Validated synthetic data generation |
+| P2 | MCP QA agent | Controlled tool use with permissions and audit evidence |
 
-**Safe portfolio claim:** A Gemini-assisted Playwright TypeScript test engineering workflow with scenario generation, static quality gates, POM reuse and recorded generated Chromium execution. Human review and deterministic assertions remain in control.
+**Portfolio message:** A Gemini-assisted Playwright TypeScript workflow for test design and automation generation, with static quality gates, POM reuse, traceability and recorded generated Chromium execution. Human review and deterministic assertions remain in control.
 
 ---
 
@@ -171,32 +179,33 @@ These are README-recorded results, not a fresh run during this review; they cove
 
 **Repository:** https://github.com/vinodcse99/healthcare-ai-testing  
 **Role:** Supporting domain QA project  
-**Status:** Prototype; execution evidence pending
+**Status:** Active — prototype validation pending
 
-### Problem
+### Problem and objective
 
-Healthcare portals need reliable login, appointment and claims workflows. Teams need UI/API validation while avoiding exposure of real patient information. AI-generated test drafts must be reviewed before acceptance.
+Healthcare portals need reliable login, appointment and claims workflows. Teams need UI/API validation while protecting sensitive patient information. AI-generated test drafts must be reviewed before acceptance.
 
-### Objective and solution
+The objective is to demonstrate QA automation for a synthetic clinic portal and an experimental human-reviewed AI test-drafting workflow without using real patient data.
 
-Demonstrate QA automation for a synthetic clinic portal and an experimental human-reviewed AI test-drafting workflow.
+### Solution workflow
 
-Workflow: manual cases (CSV) → Python AI draft generator → generated drafts → human review → accepted tests → Playwright → CI/reporting.
+Manual test cases (CSV) → Python AI draft generator → generated drafts → human review → accepted tests → Playwright execution → CI and reporting.
 
 ### Technology and provider
 
 | Area | Technology |
 |---|---|
-| Automation / language | Playwright, TypeScript |
+| UI/API automation | Playwright |
+| Automation language | TypeScript |
 | Sample application | Node.js / Express |
-| AI drafting | Python |
-| Provider / SDK | Anthropic API, Python anthropic package |
+| AI test drafting | Python |
+| AI provider / SDK | Anthropic API, Python anthropic package |
 | Test data / review | CSV |
-| CI / reporting | GitHub Actions, Playwright HTML, Python report script |
+| CI/CD / reporting | GitHub Actions, Playwright HTML, Python report script |
 
-Anthropic is documented as the provider. Exact model ID and successful live generation evidence are not established. Its Python SDK is installed separately from the Node package manifest.
+Anthropic is the documented provider. Exact model ID and successful live generation evidence are not established by current documentation. The Python SDK is installed separately from the Node package manifest.
 
-### Implemented / present according to README
+### Implemented / documented capabilities
 
 | Capability | Status |
 |---|---|
@@ -204,44 +213,37 @@ Anthropic is documented as the provider. Exact model ID and successful live gene
 | Login and appointment workflows | Present |
 | Page objects and saved authentication state | Present / documented |
 | UI tests and claims API tests | Present |
-| Smoke / regression organization | Documented |
+| Smoke and regression organization | Documented |
 | Python AI test generator | Present |
-| Manual cases, review log and summary script | Present |
+| Manual test-case CSV | Present |
+| Human review log and summary script | Present |
 | GitHub Actions workflow | Present |
 | Cross-browser configuration | Documented; execution not established |
 
-### Pending
+### Pending work
 
-| Priority | Work | Required evidence |
+| Priority | Work | Completion evidence required |
 |---|---|---|
 | P0 | Run full Playwright suite | Dated pass/fail/skip report |
 | P0 | Verify GitHub Actions | Successful workflow and job results |
-| P0 | Execute AI generator | Actual provider-backed drafts |
-| P0 | Validate generated tests | Accepted and rejected examples |
+| P0 | Execute AI generator | Actual provider-backed generated drafts |
+| P0 | Validate generated test code | Accepted and rejected examples |
 | P1 | Measure review outcomes | Generated/accepted/edited/rejected counts |
 | P1 | Add reports and screenshots | Public demo evidence |
-| P1 | Expand API negative/boundary coverage | Reproducible tests |
+| P1 | Expand API negative and boundary coverage | Reproducible tests |
 | P2 | Expand synthetic healthcare workflows | Additional safe domain scenarios |
 
-**Safe portfolio claim:** A synthetic healthcare QA project combining Playwright UI/API automation with an experimental human-reviewed AI test-drafting workflow. Keep as supporting work until execution and AI evidence are published.
+**Portfolio message:** A synthetic healthcare QA project combining Playwright UI/API automation with an experimental human-reviewed AI test-drafting workflow. It remains a supporting project until execution and AI generation evidence are published.
 
 ---
 
-# Excluded projects and naming decisions
-
-| Name | Decision | Reason |
-|---|---|---|
-| Playwright ChatGPT POC | Remove from featured portfolio; archive | No meaningful ChatGPT integration or test evidence established; npm scripts are empty |
-| Enterprise Data Catalog QA | Do not count separately | Sample application inside AI-Powered QA Automation Workbench |
-
-Do not permanently delete repositories until local copies and useful code have been checked. Archiving preserves history.
-
 # Delivery order
 
-1. Finish AI Quality Engineering Workbench: fresh offline run, live RAG, agentic datasets, CI and dashboard evidence.
-2. Finish AI-Powered QA Automation Workbench: standalone Test Designer, negative quality-gate tests, fresh execution and demo.
-3. Validate Healthcare AI Testing: UI/API execution, live draft generation and review metrics.
-4. Keep ChatGPT POC excluded/archived. Do not start another project before these deliverables are complete.
+1. **AI Quality Engineering Workbench:** fresh offline run, live RAG evaluation, agentic datasets, CI and dashboard evidence.
+2. **AI-Powered QA Automation Workbench:** standalone Test Designer, negative quality-gate tests, fresh execution and a clear demo.
+3. **Healthcare AI Testing:** UI/API execution, provider-backed draft generation and review metrics.
+
+No new portfolio projects will be started until these three have clear, reproducible evidence.
 
 ## Professional positioning
 

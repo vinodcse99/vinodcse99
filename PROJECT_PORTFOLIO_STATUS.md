@@ -1,170 +1,142 @@
 # Portfolio Project Status & Delivery Tracker
 
 **Owner:** Vinod Kumar Gogula  
-**Last reviewed:** 20 November 2026  
-**Purpose:** A transparent record of each public QA / AI-testing portfolio project: why it exists, what it demonstrates, verified outputs, current maturity, and remaining work.
-
-> Status labels describe the evidence currently present in the public repositories and recent project work. A repository containing code or a configured workflow is not automatically considered complete. Test results are snapshots from recorded runs, not guarantees of future runs.
+**Last reviewed:** 22 November 2026  
+**Purpose:** One authoritative inventory of the distinct QA / AI-testing projects in this portfolio. A sample application or feature inside a project is not counted as another project.
 
 ## Portfolio at a glance
 
-| Project | Goal | Current status | Verified output / evidence | Main pending work |
-|---|---|---|---|---|
-| [AI Quality Engineering Workbench](https://github.com/vinodcse99/ai-quality-engineering-workbench) | Test quality, reliability, RAG, agentic workflows and security behavior of AI applications | **Active – initial public release; validation expanding** | README records 124 collected offline tests (123 passed, 1 skipped); Gemini integration smoke test 1/1 passed. | Complete repeatable semantic RAG evaluation; populate remaining agentic datasets; expand provider resilience and CI. |
-| [AI-Powered QA Automation Workbench](https://github.com/vinodcse99/ai-powered-qa-automation-workbench) | Use GenAI to draft test scenarios and Playwright automation with static gates and deterministic execution | **Active – core workflow demonstrated** | 18/18 generated Chromium browser tests passed in the recorded run; both generated suites passed 10/10 static quality checks; TypeScript typecheck passed. | Independently verify standalone AI Test Designer end-to-end; add failure analysis, test-data assistant, LLM evaluation and MCP integration. |
-| [Healthcare AI Testing](https://github.com/vinodcse99/healthcare-ai-testing) | Demonstrate UI/API automation and human-reviewed AI-generated tests for a sample clinic portal | **Prototype – implementation present; end-to-end evidence pending** | Sample Express app, Playwright login/appointment tests, claims API tests, page objects, AI draft generator and CI workflow are present. | Run and record local/CI results; validate AI generation and review workflow; add measured results and broaden clinical workflow coverage. |
-| [Playwright ChatGPT POC](https://github.com/vinodcse99/playwright-chatgpt-poc) | Explore a small proof of concept connecting ChatGPT-related capability with Playwright | **Early scaffold – not a completed POC yet** | Repository has Playwright dependency, config and a CI workflow. | Define the exact integration use case; add implementation, test cases, safe API-key handling, execution evidence and README instructions. |
-| Enterprise Data Catalog QA sample | Demonstrate enterprise catalog search, filtering, asset details and generated automation | **Demonstrator is part of the AI-Powered QA Automation Workbench; separate repo is empty** | The AI-Powered QA Automation Workbench README documents a sample catalog app and UI/API/service coverage, with 18 generated browser tests passing in a recorded run. | Keep the sample project documented under the AI-Powered QA Automation Workbench, or populate the empty standalone repository before linking it as a separate project. |
+**Total distinct projects: 4**
+
+| # | Official project | Repository | Current status |
+|---|---|---|---|
+| 1 | AI Quality Engineering Workbench | [GitHub](https://github.com/vinodcse99/ai-quality-engineering-workbench) | Active – initial release; validation expanding |
+| 2 | AI-Powered QA Automation Workbench | [GitHub](https://github.com/vinodcse99/ai-powered-qa-automation-workbench) | Active – core workflow demonstrated |
+| 3 | Healthcare AI Testing | [GitHub](https://github.com/vinodcse99/healthcare-ai-testing) | Prototype – execution evidence pending |
+| 4 | Playwright ChatGPT POC | [GitHub](https://github.com/vinodcse99/playwright-chatgpt-poc) | Early scaffold – not a completed POC |
+
+**Important naming decision:** Enterprise Data Catalog QA is NOT a separate portfolio project. The Enterprise Data Catalog is the sample application inside **AI-Powered QA Automation Workbench**. Its separate empty repository is not part of the project count and must not be featured or linked as a project.
+
+> Status labels distinguish code presence from verified execution. Test results below are historical recorded runs, not a claim that tests were rerun on this review date.
 
 ## 1. AI Quality Engineering Workbench
 
-**Repository:** https://github.com/vinodcse99/ai-quality-engineering-workbench  
-**Purpose / why it was started:** Build a practical quality-engineering workbench for evaluating AI-enabled applications, rather than limiting QA to conventional UI/API automation. The project explores repeatable evaluation of LLM responses, RAG behavior, agentic tool workflows and AI security scenarios.
+**Repository:** https://github.com/vinodcse99/ai-quality-engineering-workbench
 
-**Problem being addressed**
-- Traditional functional automation does not fully measure the quality of generated answers.
+**Problem being solved**
+- Conventional functional automation does not fully measure generated-answer quality.
 - RAG systems can retrieve irrelevant context or produce unsupported answers.
-- Agentic workflows can select the wrong tool, provide invalid arguments or execute actions in the wrong sequence.
+- Agents can select the wrong tool, provide invalid arguments or execute workflows incorrectly.
 - Prompt injection and sensitive-data leakage require dedicated regression scenarios.
 
-**Approach / solution**
-- Python 3.12 and Pytest-based test architecture.
-- Structured JSON datasets for LLM, RAG, agentic and security cases.
-- Deterministic evaluators and optional model-backed Gemini / DeepEval experiments.
-- Agent modules for tool selection, argument validation, execution and trace evaluation.
-- Streamlit dashboard and JSON/HTML-oriented reporting.
+**Solution**
+A Python 3.12 / Pytest workbench with structured evaluation datasets, LLM and RAG evaluators, agent workflow modules, security scenarios, optional Gemini integration, reporting and a Streamlit dashboard.
 
-**Implemented / evidenced**
-- Project structure, requirements, environment template and README published.
-- LLM and RAG datasets and evaluator modules are present.
-- Agentic tool-selection, tool-execution, workflow and trace-evaluation modules are present.
-- Security evaluation runner and synthetic security scenarios are present.
-- Streamlit dashboard is present.
-- The published README records an offline run of 124 collected tests: 123 passed, 1 skipped, 0 failed.
-- A live Gemini integration smoke test passed 1/1 in the recorded run.
+**Implemented / recorded evidence**
+- Project structure, configuration, environment template and README.
+- LLM and RAG datasets and evaluator modules.
+- Agentic tool-selection, tool-execution, workflow and trace-evaluation modules.
+- Security evaluation runner and synthetic security scenarios.
+- Streamlit dashboard.
+- Recorded offline test run: 124 collected, 123 passed, 1 skipped, 0 failed.
+- Recorded live Gemini integration smoke test: 1/1 passed.
 
-**Known limitations / pending**
-- A semantic RAG model-backed evaluation attempt was incomplete after a temporary provider 503 response; it must not be reported as a passing evaluation.
-- Several agentic JSON dataset files in the published tree are currently empty and need meaningful cases.
-- Expand repeatable model-backed evaluation, provider retry/error handling and evaluation evidence.
-- Add CI automation and publish a reproducible validation snapshot after rerunning the full suite.
-- Continue documenting evaluator thresholds, limitations and human-review requirements.
+**Pending**
+- Complete a repeatable live semantic RAG evaluation. A prior attempt was incomplete after a provider 503 response; it is not a passing result.
+- Populate currently empty agentic JSON datasets with meaningful positive, negative and edge cases.
+- Expand provider retry/error handling.
+- Add/verify CI quality gates.
+- Rerun the full suite and publish fresh, dated evidence.
 
-**Current output:** A published Python/Pytest workbench with evaluation modules, datasets, security scenarios, a dashboard and recorded offline/Gemini smoke-test evidence. This is an active portfolio project, not a certified or exhaustive AI safety assessment.
+**Current assessment:** Substantial published implementation with recorded offline and Gemini smoke-test evidence. Active project; not yet a fully validated AI evaluation product.
 
 ## 2. AI-Powered QA Automation Workbench
 
-**Repository:** https://github.com/vinodcse99/ai-powered-qa-automation-workbench  
-**Purpose / why it was started:** Demonstrate how Generative AI can reduce repetitive QA effort by converting business requirements into candidate scenarios and Playwright tests, while keeping quality decisions deterministic and human-reviewed.
+**Repository:** https://github.com/vinodcse99/ai-powered-qa-automation-workbench
 
-**Problem being addressed**
-- Manual conversion of requirements into test cases is time-consuming.
-- Automation scripts require repeated implementation and maintenance.
-- AI-generated code can contain invalid locators, weak assertions or tests that do not trace to requirements.
+**Problem being solved**
+- Converting requirements into test cases and automation scripts is repetitive.
+- AI-generated tests may contain invalid locators, weak assertions or missing requirement traceability.
+- Teams need quality controls before generated code is executed.
 
-**Approach / solution**
-- Google Gemini-assisted test design and Playwright TypeScript generation.
-- Existing Page Object Model reuse.
-- Structured scenario JSON and generated TypeScript tests.
-- Static quality gate for syntax, imports, POM usage, assertions, uniqueness and scenario traceability.
-- Human review followed by deterministic Playwright execution.
+**Solution**
+A Gemini-assisted test-design and Playwright TypeScript generation workflow using Page Object Model reuse, structured scenarios, static quality checks, human review and deterministic browser execution.
 
-**Implemented / evidenced**
+**Implemented / recorded evidence**
 - Sample Enterprise Data Catalog application with search, filters and asset details.
 - Playwright TypeScript framework and POM.
-- UI, API and service-health test coverage.
+- UI, API and service-health coverage.
 - AI test-design and automation-generation components.
 - Generated-test static quality gate and workflow runner.
-- Recorded generated browser execution: 18 tests passed, 0 failed.
+- Recorded generated browser execution: 18 passed, 0 failed.
 - Both generated suites recorded 10/10 static quality checks; TypeScript typecheck passed.
-- Rejected generated outputs and run reports are kept separately for traceability.
 
-**Known limitations / pending**
-- Standalone AI Test Designer end-to-end execution is not independently verified.
-- AI-generated tests still require human review.
-- AI failure analyzer, AI test-data assistant, LLM evaluator and MCP-based QA agent are roadmap items.
-- Greenfield generation of an entire framework is not implemented.
-- Recorded browser evidence covers the sample application and Chromium suites, not production applications or broad cross-browser certification.
+**Pending**
+- Independently verify the standalone AI Test Designer end-to-end.
+- Demonstrate rejection of poor AI-generated tests.
+- Add failure analysis and AI-generated test quality evaluation.
+- Keep planned features (test-data assistant, LLM evaluator and MCP QA agent) labelled as planned until implemented and verified.
 
-**Current output:** A working AI-assisted scenario-to-Playwright-generation demonstration with static quality validation and a recorded 18/18 Chromium execution.
+**Current assessment:** Working AI-assisted test-generation demonstration with static validation and recorded Chromium execution. The Enterprise Data Catalog is a demonstrator within this project, not a separate project.
 
 ## 3. Healthcare AI Testing
 
-**Repository:** https://github.com/vinodcse99/healthcare-ai-testing  
-**Purpose / why it was started:** Create a safe, synthetic healthcare/clinic portal to demonstrate practical UI and API testing, authentication, appointment workflows and human-reviewed AI-assisted test generation without using real patient information.
+**Repository:** https://github.com/vinodcse99/healthcare-ai-testing
 
-**Problem being addressed**
-- Healthcare workflows require validation across authentication, appointments and claims.
-- AI-generated automation needs review and measurable acceptance rather than blind execution.
-- Test data must remain synthetic and must not expose patient information.
+**Problem being solved**
+Demonstrate safe testing of synthetic healthcare workflows and human-reviewed AI-generated test drafts without using real patient data.
 
-**Approach / solution**
-- Sample Express application with in-memory data.
-- Playwright and TypeScript tests using Page Object Model.
-- Login/authentication setup, appointment UI scenarios and claims API tests.
-- Python-based LLM draft generator and review log/report workflow.
-- GitHub Actions workflow configured for pull-request smoke tests and scheduled regression.
+**Solution**
+A sample Express clinic portal with Playwright UI/API automation, page objects, Python-based AI test draft generation and a review log/report workflow.
 
-**Implemented / evidenced in repository**
+**Implemented / present in repository**
 - Sample app, login and appointment page objects.
-- Login tests, appointment tests and claims API tests.
+- Login and appointment tests, claims API tests.
 - Manual test-case CSV.
 - AI test-generation and review-report scripts.
 - Playwright configuration and CI workflow.
 
-**Known limitations / pending**
-- The repository README does not yet publish a measured passing test run; do not describe the project as fully tested or complete.
-- Execute the suite locally and through GitHub Actions, then record actual pass/fail/skip counts.
-- Verify the AI generator against the configured model/provider and document accepted, edited and rejected draft counts.
-- Expand realistic but synthetic workflows and negative/API coverage.
-- Add evidence and update the README results section.
+**Pending**
+- Run the suite locally and through GitHub Actions; record actual pass/fail/skip counts.
+- Verify AI generation against its configured provider.
+- Record generated, accepted, edited and rejected draft counts.
+- Expand synthetic workflow and negative/API coverage.
+- Update README with actual evidence.
 
-**Current output:** A functional-looking test project structure and sample application with automation and AI-generation components; execution and AI-workflow evidence still need to be captured.
+**Current assessment:** Prototype with implementation present; end-to-end execution and AI workflow evidence pending.
 
 ## 4. Playwright ChatGPT POC
 
-**Repository:** https://github.com/vinodcse99/playwright-chatgpt-poc  
-**Purpose / why it was started:** Explore a small proof of concept for combining Playwright automation with a ChatGPT-related interaction.
+**Repository:** https://github.com/vinodcse99/playwright-chatgpt-poc
 
-**Current repository evidence**
+**Problem / intended direction**
+Explore a small proof of concept combining Playwright automation with a ChatGPT-related interaction.
+
+**Present in repository**
 - Playwright Test dependency and configuration.
-- GitHub Actions workflow configured to install dependencies and run Playwright.
-- No actual test specification or ChatGPT integration implementation is currently visible in the repository.
-- Package scripts are empty and the README contains only a short title/description.
+- GitHub Actions workflow configuration.
 
 **Pending**
-1. Define whether the POC targets ChatGPT UI automation or an API-assisted test workflow.
-2. Implement the minimal end-to-end scenario and test assertions.
-3. Keep API keys in environment secrets; never commit credentials.
-4. Add a reproducible setup/run guide and CI result.
-5. Update the README with architecture, screenshots or reports and limitations.
+- Define the exact use case (ChatGPT UI automation or API-assisted test workflow).
+- Implement the integration and meaningful test assertions.
+- Keep credentials in environment secrets.
+- Add reproducible setup instructions and execution evidence.
 
-**Current output:** Initial Playwright repository scaffold only. It should not be presented as a completed ChatGPT integration.
+**Current assessment:** Early scaffold only. Do not present it as a completed integration.
 
-## 5. Enterprise Data Catalog QA – how it fits
+## Delivery order
 
-The GitHub repository named `enterprise-data-catalog-qa` currently has no committed files (GitHub reports the repository as empty). The sample Enterprise Data Catalog application and its automation are documented and included within the [AI-Powered QA Automation Workbench](https://github.com/vinodcse99/ai-powered-qa-automation-workbench).
+1. Finish and validate the AI Quality Engineering Workbench.
+2. Finish the end-to-end verification and demo of the AI-Powered QA Automation Workbench.
+3. Validate the existing Healthcare AI Testing prototype.
+4. Keep the Playwright ChatGPT POC frozen until there is a clear job-relevant reason to complete it.
 
-Therefore:
-- Feature the AI-Powered QA Automation Workbench as the repository link.
-- Describe the Enterprise Data Catalog as the sample application used by that workbench.
-- Do not link the empty standalone repository as a completed project.
-- If a separate repository is desired later, publish the actual source and its own README, tests and execution evidence first.
+## Portfolio reporting rules
 
-## Recommended delivery order
-
-1. **AI Quality Engineering Workbench:** complete the semantic RAG evaluation and populate agentic datasets; rerun and record the full validation.
-2. **AI-Powered QA Automation Workbench:** independently verify the standalone Test Designer and implement the next highest-value capability (failure analysis).
-3. **Healthcare AI Testing:** run the existing tests and CI, verify AI draft generation, then publish real test results.
-4. **Playwright ChatGPT POC:** either implement the promised integration or keep it clearly labelled as an early scaffold / remove it from featured projects until it has substance.
-5. **Enterprise Data Catalog:** keep it as the demonstrator inside the AI-Powered QA Automation Workbench unless the standalone repository is populated.
-
-## Reporting rules for this portfolio
-
-- Use **Implemented** for code that exists.
-- Use **Verified** only when there is execution evidence.
-- Use **In progress** for partially implemented workflows.
-- Use **Planned** for roadmap items that are not yet built.
-- Publish test counts with the date/run context and distinguish offline tests from live provider calls.
-- Never present synthetic security test findings as evidence of a real compromise.
-- Never claim production healthcare, mortgage or enterprise deployment based on these independent sample projects.
+- **Implemented** means code exists.
+- **Verified** means execution evidence exists.
+- **In progress** means a workflow is partially implemented or not fully validated.
+- **Planned** means it is not yet built.
+- Date and identify each test run; distinguish offline tests from live-provider tests.
+- Do not claim production deployment based on independent sample projects.
+- Do not count sample applications, modules or features as separate portfolio projects.
